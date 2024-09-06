@@ -1,7 +1,8 @@
 name: dropdown_wheel_picker
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+description: Flutter package for dropdown scrollable wheel picker
+version: 0.0.1
+repository: https://github.com/fanjin-z/dropdown_wheel_picker
+homepage: https://fanjin.org
 
 environment:
   sdk: ^3.5.0
