@@ -34,23 +34,43 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
-            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-            child: Column(
-              children: [
-                Dropdown(),
-                DropdownItemPicker(
-                  pickerTitle: Text('UN Security Council'),
-                  items: [
-                    Text('China 🇨🇳'),
-                    Text('France 🇫🇷'),
-                    Text('Russia 🇷🇺'),
-                    Text('United Kingdom 🇬🇧'),
-                    Text('United States 🇺🇸'),
-                  ],
-                )
-              ],
-            ))
+        body: SafeArea(
+      child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+          child: Column(
+            children: [
+              Dropdown(),
+              DropdownItemPicker(
+                pickerTitle: Text('UN Security Council'),
+                items: [
+                  Text('China 🇨🇳'),
+                  Text('France 🇫🇷'),
+                  Text('Russia 🇷🇺'),
+                  Text('United Kingdom 🇬🇧'),
+                  Text('United States 🇺🇸'),
+                ],
+              ),
+              DropdownMultiColItemPicker(
+                  pickerTitle: Text('UN Nations'),
+                  multiColItems: [
+                    [
+                      Text('China 🇨🇳'),
+                      Text('France 🇫🇷'),
+                      Text('Russia 🇷🇺'),
+                      Text('United Kingdom 🇬🇧'),
+                      Text('United States 🇺🇸'),
+                    ],
+                    [
+                      Text('China 🇨🇳'),
+                      Text('France 🇫🇷'),
+                      Text('Russia 🇷🇺'),
+                      Text('United Kingdom 🇬🇧'),
+                      Text('United States 🇺🇸'),
+                    ]
+                  ])
+            ],
+          )),
+    )
     );
   }
 }
