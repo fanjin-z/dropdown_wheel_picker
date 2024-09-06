@@ -39,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
           child: Column(
             children: [
-              Dropdown(),
               DropdownItemPicker(
                 pickerTitle: Text('UN Security Council'),
                 items: [
