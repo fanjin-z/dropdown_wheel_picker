@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'scroll_view.dart';
+
 class DropdownItemPicker extends StatefulWidget {
   DropdownItemPicker(
       {super.key,
@@ -53,19 +55,13 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
               Column(
                 children: [
                   Divider(),
-                  SizedBox(
+                  ItemScrollView(
                     width: MediaQuery.of(context).size.width,
                     height: 90,
-                    child: ListWheelScrollView.useDelegate(
-                      onSelectedItemChanged: (index) => setState(() {
-                        selectedItem = widget.items[index];
-                      }),
-                      itemExtent: 20,
-                      physics: const FixedExtentScrollPhysics(),
-                      childDelegate: ListWheelChildBuilderDelegate(
-                          childCount: widget.items.length,
-                          builder: (context, index) => widget.items[index]),
-                    ),
+                    items: widget.items,
+                    onChanged: (index) => setState(() {
+                      selectedItem = widget.items[index];
+                    }),
                   ),
                 ],
               ),
@@ -158,23 +154,14 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: nCols,
-                        itemBuilder: (context, colIndex) {
-                          final items = widget.multiColItems[colIndex];
-                          return SizedBox(
-                            width: MediaQuery.of(context).size.width / nCols,
-                            child: ListWheelScrollView.useDelegate(
-                              onSelectedItemChanged: (index) => setState(() {
+                        itemBuilder: (context, colIndex) => ItemScrollView(
+                              width: MediaQuery.of(context).size.width / nCols,
+                              items: widget.multiColItems[colIndex],
+                              onChanged: (index) => setState(() {
                                 selectedItems[colIndex] =
                                     widget.multiColItems[colIndex][index];
                               }),
-                              itemExtent: 20,
-                              physics: const FixedExtentScrollPhysics(),
-                              childDelegate: ListWheelChildBuilderDelegate(
-                                  childCount: items.length,
-                                  builder: (context, index) => items[index]),
-                            ),
-                          );
-                        }),
+                            )),
                   )
                 ],
               ),
