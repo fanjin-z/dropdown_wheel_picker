@@ -76,7 +76,6 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
   }
 }
 
-
 class DropdownMultiColItemPicker extends StatefulWidget {
   const DropdownMultiColItemPicker(
       {super.key,

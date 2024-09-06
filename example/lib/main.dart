@@ -1,4 +1,4 @@
-import 'package:dropdown_wheel_picker/dropdown.dart';
+import 'package:dropdown_wheel_picker/dropdown_wheel_picker.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ])
             ],
           )),
-    )
-    );
+    ));
   }
 }
