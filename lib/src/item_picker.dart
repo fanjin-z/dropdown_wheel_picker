@@ -61,6 +61,7 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
                     items: widget.items,
                     onChanged: (index) => setState(() {
                       selectedItem = widget.items[index];
+                      widget.onChanged!(widget.items[index]);
                     }),
                   ),
                 ],
@@ -82,7 +83,7 @@ class DropdownMultiColItemPicker extends StatefulWidget {
 
   final Widget pickerTitle;
   final List<List<Widget>> multiColItems;
-  final ValueChanged<Widget>? onChanged;
+  final ValueChanged<List<Widget?>>? onChanged;
   final Color backgroundColor;
 
   @override
@@ -160,6 +161,7 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
                               onChanged: (index) => setState(() {
                                 selectedItems[colIndex] =
                                     widget.multiColItems[colIndex][index];
+                                widget.onChanged!(selectedItems);
                               }),
                             )),
                   )

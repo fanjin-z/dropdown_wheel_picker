@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text('United Kingdom 🇬🇧'),
                   Text('United States 🇺🇸'),
                 ],
+                onChanged: (value) => print('Selected Country: $value'),
               ),
               DropdownMultiColItemPicker(
                   pickerTitle: Text('UN Nations'),
@@ -65,7 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text('United Kingdom 🇬🇧'),
                       Text('United States 🇺🇸'),
                     ]
-                  ]),
+                ],
+                onChanged: (value) => print('Selected Countries: $value'),
+              ),
               DropdownDatePicker(
                 pickerTitle: Text('Date Picker'),
                 initialDate: DateTime(2024, 1, 1),
