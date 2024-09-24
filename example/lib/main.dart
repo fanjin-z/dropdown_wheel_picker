@@ -65,7 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       Text('United Kingdom 🇬🇧'),
                       Text('United States 🇺🇸'),
                     ]
-                  ])
+                  ]),
+              DropdownDatePicker(
+                pickerTitle: Text('Date Picker'),
+                initialDate: DateTime(2024, 1, 1),
+                firstYear: 2020,
+                lastYear: 2025,
+              )
             ],
           )),
     ));
