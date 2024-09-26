@@ -15,7 +15,7 @@ class DropdownDatePicker extends StatefulWidget {
   final DateTime initialDate;
   final int firstYear;
   final int lastYear;
-  final ValueChanged<Widget>? onChanged;
+  final ValueChanged<DateTime>? onChanged;
   final Color backgroundColor;
 
   @override
@@ -85,12 +85,20 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                                       Text('${widget.firstYear + index}')),
                               onChanged: (index) => setState(() {
                                     selectedYear = widget.firstYear + index;
+                                    if (widget.onChanged != null) {
+                                      widget.onChanged!(DateTime(selectedYear,
+                                          selectedMonth, selectedDay));
+                                    }
                                   })),
                           ItemScrollView(
                               width: MediaQuery.of(context).size.width / 3,
                               items: months,
                               onChanged: (index) => setState(() {
                                     selectedMonth = index + 1;
+                                    if (widget.onChanged != null) {
+                                      widget.onChanged!(DateTime(selectedYear,
+                                          selectedMonth, selectedDay));
+                                    }
                                   })),
                           ItemScrollView(
                               width: MediaQuery.of(context).size.width / 3,
@@ -100,6 +108,10 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                               onChanged: (index) => setState(
                                     () {
                                       selectedDay = index + 1;
+                                      if (widget.onChanged != null) {
+                                        widget.onChanged!(DateTime(selectedYear,
+                                            selectedMonth, selectedDay));
+                                      }
                                     },
                                   )),
                         ],

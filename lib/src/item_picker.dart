@@ -61,7 +61,9 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
                     items: widget.items,
                     onChanged: (index) => setState(() {
                       selectedItem = widget.items[index];
-                      widget.onChanged!(widget.items[index]);
+                      if (widget.onChanged != null) {
+                        widget.onChanged!(widget.items[index]);
+                      }
                     }),
                   ),
                 ],
@@ -161,7 +163,9 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
                               onChanged: (index) => setState(() {
                                 selectedItems[colIndex] =
                                     widget.multiColItems[colIndex][index];
-                                widget.onChanged!(selectedItems);
+                                if (widget.onChanged != null) {
+                                  widget.onChanged!(selectedItems);
+                                }
                               }),
                             )),
                   )

@@ -50,22 +50,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (value) => print('Selected Country: $value'),
               ),
               DropdownMultiColItemPicker(
-                  pickerTitle: Text('UN Nations'),
-                  multiColItems: [
-                    [
-                      Text('China 🇨🇳'),
-                      Text('France 🇫🇷'),
-                      Text('Russia 🇷🇺'),
-                      Text('United Kingdom 🇬🇧'),
-                      Text('United States 🇺🇸'),
-                    ],
-                    [
-                      Text('China 🇨🇳'),
-                      Text('France 🇫🇷'),
-                      Text('Russia 🇷🇺'),
-                      Text('United Kingdom 🇬🇧'),
-                      Text('United States 🇺🇸'),
-                    ]
+                pickerTitle: Text('UN Nations'),
+                multiColItems: [
+                  [
+                    Text('China 🇨🇳'),
+                    Text('France 🇫🇷'),
+                    Text('Russia 🇷🇺'),
+                    Text('United Kingdom 🇬🇧'),
+                    Text('United States 🇺🇸'),
+                  ],
+                  [
+                    Text('China 🇨🇳'),
+                    Text('France 🇫🇷'),
+                    Text('Russia 🇷🇺'),
+                    Text('United Kingdom 🇬🇧'),
+                    Text('United States 🇺🇸'),
+                  ]
                 ],
                 onChanged: (value) => print('Selected Countries: $value'),
               ),
@@ -74,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 initialDate: DateTime(2024, 1, 1),
                 firstYear: 2020,
                 lastYear: 2025,
+                onChanged: (value) => print('Selected Date: $value'),
               )
             ],
           )),
