@@ -37,7 +37,7 @@ DropdownItemPicker(
         Text('United States 🇺🇸'),
     ],
     onChanged: (value) => print('Selected Country: $value'),
-    )
+)
 ```
 
 Dropdown Multi-column Item Picker
