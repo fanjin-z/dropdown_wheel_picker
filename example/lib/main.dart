@@ -49,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
                 onChanged: (value) => print('Selected Country: $value'),
               ),
+              SizedBox(height: 16),
               DropdownMultiColItemPicker(
                 pickerTitle: Text('Countries'),
                 multiColItems: [
@@ -74,13 +75,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
                 onChanged: (value) => print('Selected Countries: $value'),
               ),
+              SizedBox(height: 16),
               DropdownDatePicker(
                 pickerTitle: Text('Date Picker'),
                 initialDate: DateTime(2024, 1, 1),
                 firstYear: 2020,
                 lastYear: 2025,
                 onChanged: (value) => print('Selected Date: $value'),
-              )
+              ),
+              SizedBox(height: 16),
+              DropdownDistancePicker(pickerTitle: Text('Distance Picker'))
             ],
           )),
     ));
