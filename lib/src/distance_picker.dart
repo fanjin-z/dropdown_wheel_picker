@@ -1,3 +1,4 @@
+import 'package:dropdown_wheel_picker/src/scroll_view.dart';
 import 'package:flutter/material.dart';
 
 class DropdownDistancePicker extends StatefulWidget {
@@ -111,8 +112,59 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                               })),
                     ),
                   ]),
-                  Divider(),
-                  SizedBox(height: 90)
+                  if (length.unit == 'km' || length.unit == 'mi')
+                    SizedBox(
+                      height: 90,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          ItemScrollView(
+                              width: MediaQuery.of(context).size.width / 2,
+                              items:
+                                  List.generate(100, (index) => Text('$index')),
+                              onChanged: (index) {
+                                setState(() {
+                                  final whole = length.value.truncate();
+                                  final fraction = length.value - whole;
+                                  length.value = index + fraction;
+                                });
+                                if (widget.onChanged != null) {
+                                  widget.onChanged!(length);
+                                }
+                              }),
+                          ItemScrollView(
+                              width: MediaQuery.of(context).size.width / 2,
+                              items:
+                                  List.generate(10, (index) => Text('.$index')),
+                              onChanged: (index) {
+                                setState(() {
+                                  final whole = length.value.truncate();
+                                  length.value = whole + index * 0.1;
+                                });
+                                if (widget.onChanged != null) {
+                                  widget.onChanged!(length);
+                                }
+                              }),
+                        ],
+                      ),
+                    ),
+                  if (length.unit == 'm')
+                    SizedBox(
+                      height: 90,
+                      child: ItemScrollView(
+                        width: MediaQuery.of(context).size.width,
+                        items: List.generate(
+                            21, (index) => Text('${index * 100}')),
+                        onChanged: (index) {
+                          setState(() {
+                            length.value = index * 100;
+                          });
+                          if (widget.onChanged != null) {
+                            widget.onChanged!(length);
+                          }
+                        },
+                      ),
+                    )
                 ],
               )
           ],
