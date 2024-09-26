@@ -43,26 +43,18 @@ DropdownItemPicker(
 Dropdown Multi-column Item Picker
 ```dart
 DropdownMultiColItemPicker(
-    pickerTitle: Text('Countries'),
+    pickerTitle: Text('Star Wars'),
     multiColItems: [
         [
-        Text('China 🇨🇳'),
-        Text('France 🇫🇷'),
-        Text('Russia 🇷🇺'),
-        Text('United Kingdom 🇬🇧'),
-        Text('United States 🇺🇸'),
+            Text('Jedi'),
+            Text('Empire'),
         ],
         [
-        Text('Algeria 🇩🇿'),
-        Text('Ecuador 🇪🇨'),
-        Text('Guyana 🇬🇾'),
-        Text('Japan 🇯🇵'),
-        Text('Malta 🇲🇹'),
-        Text('Mozambique 🇲🇿'),
-        Text('Sierra Leone 🇸🇱'),
-        Text('Slovenia 🇸🇮'),
-        Text('South Korea 🇰🇷'),
-        Text('Switzerland 🇨🇭'),
+            Text('Luke'),
+            Text('Anakin'),
+            Text('Obi-Wan'),
+            Text('Han Solo'),
+            Text('Palpatine'),
         ]
     ]
     onChanged: (value) => print('Selected Countries: $value'),
@@ -77,6 +69,20 @@ DropdownDatePicker(
     firstYear: 2020,
     lastYear: 2025,
     onChanged: (value) => print('Selected Date: $value'),
+)
+```
+
+```dart
+DropdownDistancePicker(
+    pickerTitle: Text('Distance Picker'),
+    onChanged: (value) => print('${value.value} ${value.unit}'),
+)
+```
+
+```dart
+DropdownTimePicker(
+    pickerTitle: Text('Time Picker'),
+    onChanged: (value) => print(value),
 )
 ```
 
