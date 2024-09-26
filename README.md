@@ -25,11 +25,59 @@ start using the package.
 
 ## Usage
 
-Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
+Dropdown Item Picker
 ```dart
-const like = 'sample';
+DropdownItemPicker(
+    pickerTitle: Text('Countries'),
+    items: [
+        Text('China 🇨🇳'),
+        Text('France 🇫🇷'),
+        Text('Russia 🇷🇺'),
+        Text('United Kingdom 🇬🇧'),
+        Text('United States 🇺🇸'),
+    ],
+    onChanged: (value) => print('Selected Country: $value'),
+    )
+```
+
+Dropdown Multi-column Item Picker
+```dart
+DropdownMultiColItemPicker(
+    pickerTitle: Text('Countries'),
+    multiColItems: [
+        [
+        Text('China 🇨🇳'),
+        Text('France 🇫🇷'),
+        Text('Russia 🇷🇺'),
+        Text('United Kingdom 🇬🇧'),
+        Text('United States 🇺🇸'),
+        ],
+        [
+        Text('Algeria 🇩🇿'),
+        Text('Ecuador 🇪🇨'),
+        Text('Guyana 🇬🇾'),
+        Text('Japan 🇯🇵'),
+        Text('Malta 🇲🇹'),
+        Text('Mozambique 🇲🇿'),
+        Text('Sierra Leone 🇸🇱'),
+        Text('Slovenia 🇸🇮'),
+        Text('South Korea 🇰🇷'),
+        Text('Switzerland 🇨🇭'),
+        ]
+    ]
+    onChanged: (value) => print('Selected Countries: $value'),
+)
+```
+
+Dropdown Date Picker
+```dart
+DropdownDatePicker(
+    pickerTitle: Text('Date Picker'),
+    initialDate: DateTime(2024, 1, 1),
+    firstYear: 2020,
+    lastYear: 2025,
+    onChanged: (value) => print('Selected Date: $value'),
+)
 ```
 
 ## Additional information

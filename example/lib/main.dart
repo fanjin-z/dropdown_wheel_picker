@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: [
               DropdownItemPicker(
-                pickerTitle: Text('UN Security Council'),
+                pickerTitle: Text('Countries'),
                 items: [
                   Text('China 🇨🇳'),
                   Text('France 🇫🇷'),
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (value) => print('Selected Country: $value'),
               ),
               DropdownMultiColItemPicker(
-                pickerTitle: Text('UN Nations'),
+                pickerTitle: Text('Countries'),
                 multiColItems: [
                   [
                     Text('China 🇨🇳'),
@@ -60,11 +60,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     Text('United States 🇺🇸'),
                   ],
                   [
-                    Text('China 🇨🇳'),
-                    Text('France 🇫🇷'),
-                    Text('Russia 🇷🇺'),
-                    Text('United Kingdom 🇬🇧'),
-                    Text('United States 🇺🇸'),
+                    Text('Algeria 🇩🇿'),
+                    Text('Ecuador 🇪🇨'),
+                    Text('Guyana 🇬🇾'),
+                    Text('Japan 🇯🇵'),
+                    Text('Malta 🇲🇹'),
+                    Text('Mozambique 🇲🇿'),
+                    Text('Sierra Leone 🇸🇱'),
+                    Text('Slovenia 🇸🇮'),
+                    Text('South Korea 🇰🇷'),
+                    Text('Switzerland 🇨🇭'),
                   ]
                 ],
                 onChanged: (value) => print('Selected Countries: $value'),
