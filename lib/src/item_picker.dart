@@ -59,12 +59,14 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
                     width: MediaQuery.of(context).size.width,
                     height: 90,
                     items: widget.items,
-                    onChanged: (index) => setState(() {
-                      selectedItem = widget.items[index];
+                    onChanged: (index) {
+                      setState(() {
+                        selectedItem = widget.items[index];
+                      });
                       if (widget.onChanged != null) {
                         widget.onChanged!(widget.items[index]);
                       }
-                    }),
+                    },
                   ),
                 ],
               ),
@@ -160,13 +162,15 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
                         itemBuilder: (context, colIndex) => ItemScrollView(
                               width: MediaQuery.of(context).size.width / nCols,
                               items: widget.multiColItems[colIndex],
-                              onChanged: (index) => setState(() {
-                                selectedItems[colIndex] =
-                                    widget.multiColItems[colIndex][index];
+                              onChanged: (index) {
+                                setState(() {
+                                  selectedItems[colIndex] =
+                                      widget.multiColItems[colIndex][index];
+                                });
                                 if (widget.onChanged != null) {
                                   widget.onChanged!(selectedItems);
                                 }
-                              }),
+                              },
                             )),
                   )
                 ],

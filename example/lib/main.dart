@@ -84,7 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (value) => print('Selected Date: $value'),
               ),
               SizedBox(height: 16),
-              DropdownDistancePicker(pickerTitle: Text('Distance Picker'))
+              DropdownDistancePicker(
+                pickerTitle: Text('Distance Picker'),
+                onChanged: (value) => print('${value.value} ${value.unit}'),
+              )
             ],
           )),
     ));

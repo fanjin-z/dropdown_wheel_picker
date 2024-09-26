@@ -83,37 +83,41 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                                   widget.lastYear - widget.firstYear + 1,
                                   (index) =>
                                       Text('${widget.firstYear + index}')),
-                              onChanged: (index) => setState(() {
-                                    selectedYear = widget.firstYear + index;
-                                    if (widget.onChanged != null) {
-                                      widget.onChanged!(DateTime(selectedYear,
-                                          selectedMonth, selectedDay));
-                                    }
-                                  })),
+                              onChanged: (index) {
+                                setState(() {
+                                  selectedYear = widget.firstYear + index;
+                                });
+                                if (widget.onChanged != null) {
+                                  widget.onChanged!(DateTime(selectedYear,
+                                      selectedMonth, selectedDay));
+                                }
+                              }),
                           ItemScrollView(
                               width: MediaQuery.of(context).size.width / 3,
                               items: months,
-                              onChanged: (index) => setState(() {
-                                    selectedMonth = index + 1;
-                                    if (widget.onChanged != null) {
-                                      widget.onChanged!(DateTime(selectedYear,
-                                          selectedMonth, selectedDay));
-                                    }
-                                  })),
+                              onChanged: (index) {
+                                setState(() {
+                                  selectedMonth = index + 1;
+                                });
+                                if (widget.onChanged != null) {
+                                  widget.onChanged!(DateTime(selectedYear,
+                                      selectedMonth, selectedDay));
+                                }
+                              }),
                           ItemScrollView(
                               width: MediaQuery.of(context).size.width / 3,
                               items: List.generate(
                                   daysInMonth(selectedYear, selectedMonth),
                                   (index) => Text('${index + 1}')),
-                              onChanged: (index) => setState(
-                                    () {
-                                      selectedDay = index + 1;
-                                      if (widget.onChanged != null) {
-                                        widget.onChanged!(DateTime(selectedYear,
-                                            selectedMonth, selectedDay));
-                                      }
-                                    },
-                                  )),
+                              onChanged: (index) {
+                                setState(() {
+                                  selectedDay = index + 1;
+                                });
+                                if (widget.onChanged != null) {
+                                  widget.onChanged!(DateTime(selectedYear,
+                                      selectedMonth, selectedDay));
+                                }
+                              }),
                         ],
                       ))
                 ],

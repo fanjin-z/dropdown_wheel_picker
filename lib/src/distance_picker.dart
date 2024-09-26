@@ -4,9 +4,11 @@ class DropdownDistancePicker extends StatefulWidget {
   const DropdownDistancePicker(
       {super.key,
       required this.pickerTitle,
+      this.onChanged,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
+  final ValueChanged<Length>? onChanged;
   final Color backgroundColor;
 
   @override
@@ -64,6 +66,9 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                                   setState(() {
                                     length.unit = unit;
                                   });
+                                  if (widget.onChanged != null) {
+                                    widget.onChanged!(length);
+                                  }
                                 }
                               })),
                     ),
@@ -80,6 +85,9 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                                   setState(() {
                                     length.unit = unit;
                                   });
+                                  if (widget.onChanged != null) {
+                                    widget.onChanged!(length);
+                                  }
                                 }
                               })),
                     ),
@@ -96,6 +104,9 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                                   setState(() {
                                     length.unit = unit;
                                   });
+                                  if (widget.onChanged != null) {
+                                    widget.onChanged!(length);
+                                  }
                                 }
                               })),
                     ),
