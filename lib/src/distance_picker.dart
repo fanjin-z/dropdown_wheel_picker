@@ -6,10 +6,12 @@ class DropdownDistancePicker extends StatefulWidget {
       {super.key,
       required this.pickerTitle,
       this.onChanged,
+      this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
   final ValueChanged<Length>? onChanged;
+  final double scrollWheelHeight;
   final Color backgroundColor;
 
   @override
@@ -114,7 +116,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                   ]),
                   if (length.unit == 'km' || length.unit == 'mi')
                     SizedBox(
-                      height: 90,
+                      height: widget.scrollWheelHeight,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
@@ -150,7 +152,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                     ),
                   if (length.unit == 'm')
                     SizedBox(
-                      height: 90,
+                      height: widget.scrollWheelHeight,
                       child: ItemScrollView(
                         width: MediaQuery.of(context).size.width,
                         items: List.generate(

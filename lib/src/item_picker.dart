@@ -8,11 +8,13 @@ class DropdownItemPicker extends StatefulWidget {
       required this.pickerTitle,
       required this.items,
       this.onChanged,
+      this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
   final List<Widget> items;
   final ValueChanged<Widget>? onChanged;
+  final double scrollWheelHeight;
   final Color backgroundColor;
 
   @override
@@ -57,7 +59,7 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
                   Divider(),
                   ItemScrollView(
                     width: MediaQuery.of(context).size.width,
-                    height: 90,
+                    height: widget.scrollWheelHeight,
                     items: widget.items,
                     onChanged: (index) {
                       setState(() {
@@ -83,11 +85,13 @@ class DropdownMultiColItemPicker extends StatefulWidget {
       required this.pickerTitle,
       required this.multiColItems,
       this.onChanged,
+      this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
   final List<List<Widget>> multiColItems;
   final ValueChanged<List<Widget?>>? onChanged;
+  final double scrollWheelHeight;
   final Color backgroundColor;
 
   @override
@@ -155,7 +159,7 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
                 children: [
                   Divider(),
                   SizedBox(
-                    height: 90,
+                    height: widget.scrollWheelHeight,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: nCols,

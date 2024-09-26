@@ -20,8 +20,11 @@ class ItemScrollView extends StatelessWidget {
       height: height,
       child: ListWheelScrollView.useDelegate(
         onSelectedItemChanged: onChanged,
-        itemExtent: 20,
+        itemExtent: 26,
         physics: const FixedExtentScrollPhysics(),
+        diameterRatio: 1.5,
+        useMagnifier: true,
+        magnification: 1.5,
         childDelegate: ListWheelChildBuilderDelegate(
             childCount: items.length,
             builder: (context, index) => items[index]),
