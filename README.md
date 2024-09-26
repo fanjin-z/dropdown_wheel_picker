@@ -72,6 +72,7 @@ DropdownDatePicker(
 )
 ```
 
+Dropdown Distance Picker
 ```dart
 DropdownDistancePicker(
     pickerTitle: Text('Distance Picker'),
@@ -79,6 +80,7 @@ DropdownDistancePicker(
 )
 ```
 
+Dropdown Time Picker
 ```dart
 DropdownTimePicker(
     pickerTitle: Text('Time Picker'),
