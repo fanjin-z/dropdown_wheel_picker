@@ -8,12 +8,14 @@ class DropdownItemPicker extends StatefulWidget {
       required this.pickerTitle,
       required this.items,
       this.onChanged,
+      this.initialItemIndex = 0,
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
   final List<Widget> items;
   final ValueChanged<Widget>? onChanged;
+  final int initialItemIndex;
   final double scrollWheelHeight;
   final Color backgroundColor;
 
@@ -23,7 +25,22 @@ class DropdownItemPicker extends StatefulWidget {
 
 class _DropdownItemPickerState extends State<DropdownItemPicker> {
   bool isToggle = false;
-  Widget? selectedItem;
+  late int selectedIndex;
+  late ScrollController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    selectedIndex = widget.initialItemIndex;
+    controller = FixedExtentScrollController(initialItem: selectedIndex);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +56,10 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
             GestureDetector(
               behavior: HitTestBehavior.translucent,
               onTap: () => setState(() {
+                if (isToggle) {
+                  controller =
+                      FixedExtentScrollController(initialItem: selectedIndex);
+                }
                 isToggle = !isToggle;
               }),
               child: Row(
@@ -46,7 +67,7 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
                   children: [
                     widget.pickerTitle,
                     Row(children: [
-                      selectedItem ?? Text('    '),
+                      widget.items[selectedIndex],
                       isToggle
                           ? Icon(Icons.arrow_drop_up)
                           : Icon(Icons.arrow_drop_down)
@@ -60,10 +81,11 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
                   ItemScrollView(
                     width: MediaQuery.of(context).size.width,
                     height: widget.scrollWheelHeight,
+                    controller: controller,
                     items: widget.items,
                     onChanged: (index) {
                       setState(() {
-                        selectedItem = widget.items[index];
+                        selectedIndex = index;
                       });
                       if (widget.onChanged != null) {
                         widget.onChanged!(widget.items[index]);
@@ -90,7 +112,7 @@ class DropdownMultiColItemPicker extends StatefulWidget {
 
   final Widget pickerTitle;
   final List<List<Widget>> multiColItems;
-  final ValueChanged<List<Widget?>>? onChanged;
+  final ValueChanged<List<Widget>>? onChanged;
   final double scrollWheelHeight;
   final Color backgroundColor;
 
@@ -102,14 +124,20 @@ class DropdownMultiColItemPicker extends StatefulWidget {
 class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
   bool isToggle = false;
   late int nCols;
-  late List<Widget?> selectedItems;
+  late List<int> selectedIndexes;
+  late List<Widget> selectedItems;
+  late List<ScrollController> controllers;
 
   @override
   void initState() {
     super.initState();
 
     nCols = widget.multiColItems.length;
-    selectedItems = List.generate(nCols, (_) => null);
+    selectedIndexes = List.generate(nCols, (_) => 0);
+    selectedItems =
+        List.generate(nCols, (index) => widget.multiColItems[index][0]);
+    controllers = List.generate(
+        nCols, (_) => FixedExtentScrollController(initialItem: 0));
   }
 
   @override
@@ -126,6 +154,12 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
             GestureDetector(
               behavior: HitTestBehavior.translucent,
               onTap: () => setState(() {
+                if (isToggle) {
+                  for (var i = 0; i < nCols; i++) {
+                    controllers[i] = FixedExtentScrollController(
+                        initialItem: selectedIndexes[i]);
+                  }
+                }
                 isToggle = !isToggle;
               }),
               child: SizedBox(
@@ -143,7 +177,7 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
                                   width: MediaQuery.of(context).size.width *
                                       0.6 /
                                       nCols,
-                                  child: selectedItems[index] ?? Text('    '),
+                                  child: selectedItems[index],
                                 )),
                       ),
                       Flexible(
@@ -165,9 +199,11 @@ class _DropdownMultiItemPickerState extends State<DropdownMultiColItemPicker> {
                         itemCount: nCols,
                         itemBuilder: (context, colIndex) => ItemScrollView(
                               width: MediaQuery.of(context).size.width / nCols,
+                              controller: controllers[colIndex],
                               items: widget.multiColItems[colIndex],
                               onChanged: (index) {
                                 setState(() {
+                                  selectedIndexes[colIndex] = index;
                                   selectedItems[colIndex] =
                                       widget.multiColItems[colIndex][index];
                                 });

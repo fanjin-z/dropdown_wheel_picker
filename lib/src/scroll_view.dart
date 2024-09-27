@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
 class ItemScrollView extends StatelessWidget {
-  const ItemScrollView(
-      {super.key,
-      this.width,
-      this.height,
-      required this.items,
-      required this.onChanged});
+  const ItemScrollView({
+    super.key,
+    required this.items,
+    required this.onChanged,
+    this.width,
+    this.height,
+    this.controller,
+  });
 
-  final double? width;
-  final double? height;
   final List<Widget> items;
   final ValueChanged<int> onChanged;
+  final double? width;
+  final double? height;
+  final ScrollController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +23,9 @@ class ItemScrollView extends StatelessWidget {
       height: height,
       child: ListWheelScrollView.useDelegate(
         onSelectedItemChanged: onChanged,
-        itemExtent: 26,
+        controller: controller,
         physics: const FixedExtentScrollPhysics(),
+        itemExtent: 26,
         diameterRatio: 1.5,
         useMagnifier: true,
         magnification: 1.5,
