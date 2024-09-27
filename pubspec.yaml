@@ -1,6 +1,6 @@
 name: dropdown_wheel_picker
 description: Flutter package for dropdown scrollable wheel picker
-version: 0.0.3
+version: 0.0.4
 repository: https://github.com/fanjin-z/dropdown_wheel_picker
 homepage: https://pub.dev/packages/dropdown_wheel_picker
 issue_tracker: https://github.com/fanjin-z/dropdown_wheel_picker/issues
@@ -13,5 +13,5 @@ dependencies:
       sdk: flutter
 
 dev_dependencies:
-  lints: ^4.0.0
+  lints: ^5.0.0
   test: ^1.24.0
