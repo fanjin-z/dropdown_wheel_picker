@@ -84,6 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
               DropdownTimePicker(
                 pickerTitle: Text('Time Picker'),
                 onChanged: (value) => print(value),
+              ),
+              SizedBox(height: 16),
+              DropdownPacePicker(
+                pickerTitle: Text('Pace Picker'),
+                onChanged: (value) => print(value),
               )
             ],
           )),
