@@ -113,7 +113,7 @@ class _DropdownPacePickerState extends State<DropdownPacePicker> {
                       scrollDirection: Axis.horizontal,
                       children: [
                         ItemScrollView(
-                            key: PageStorageKey(widget.pickerTitle.hashCode),
+                            key: PageStorageKey(hashCode),
                             width: MediaQuery.of(context).size.width / 2,
                             controller: minuteCtrl,
                             items:
@@ -130,8 +130,7 @@ class _DropdownPacePickerState extends State<DropdownPacePicker> {
                               }
                             }),
                         ItemScrollView(
-                            key:
-                                PageStorageKey(widget.pickerTitle.hashCode + 1),
+                            key: PageStorageKey(hashCode + 1),
                             width: MediaQuery.of(context).size.width / 2,
                             controller: secondCtrl,
                             items:

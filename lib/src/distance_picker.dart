@@ -50,8 +50,10 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                     ]),
                   ],
                 )),
-            if (isToggle)
-              Column(
+            
+            Visibility(
+              visible: isToggle,
+              child: Column(
                 children: [
                   Divider(),
                   Row(children: [
@@ -121,6 +123,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                         scrollDirection: Axis.horizontal,
                         children: [
                           ItemScrollView(
+                              key: PageStorageKey(hashCode),
                               width: MediaQuery.of(context).size.width / 2,
                               items:
                                   List.generate(100, (index) => Text('$index')),
@@ -135,6 +138,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                                 }
                               }),
                           ItemScrollView(
+                              key: PageStorageKey(hashCode + 1),
                               width: MediaQuery.of(context).size.width / 2,
                               items:
                                   List.generate(10, (index) => Text('.$index')),
@@ -154,6 +158,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                     SizedBox(
                       height: widget.scrollWheelHeight,
                       child: ItemScrollView(
+                        key: PageStorageKey(hashCode + 2),
                         width: MediaQuery.of(context).size.width,
                         items: List.generate(
                             21, (index) => Text('${index * 100}')),
@@ -168,6 +173,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                       ),
                     )
                 ],
+              ),
               )
           ],
         ),

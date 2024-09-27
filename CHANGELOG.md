@@ -7,3 +7,7 @@
 
 ## 0.0.3
 - Add `DropdownDistancePicker` and `DropdownTimePicker`
+
+## 0.0.4
+- Add `DropdownPacePicker`
+- Save current scroll item with PageStorage

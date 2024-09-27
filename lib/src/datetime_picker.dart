@@ -30,6 +30,9 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
   late int selectedYear;
   late int selectedMonth;
   late int selectedDay;
+  late ScrollController yearCtrl;
+  late ScrollController monthCtrl;
+  late ScrollController dayCtrl;
 
   List<Widget> months = List.generate(12, (index) => Text(monthAbbr[index]));
 
@@ -40,6 +43,11 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
     selectedYear = widget.initialDate.year;
     selectedMonth = widget.initialDate.month;
     selectedDay = widget.initialDate.day;
+
+    yearCtrl = FixedExtentScrollController(
+        initialItem: selectedYear - widget.firstYear);
+    monthCtrl = FixedExtentScrollController(initialItem: selectedMonth);
+    dayCtrl = FixedExtentScrollController(initialItem: selectedDay);
   }
 
   @override
@@ -71,8 +79,9 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                     ]),
                   ]),
             ),
-            if (isToggle)
-              Column(
+            Visibility(
+              visible: isToggle,
+              child: Column(
                 children: [
                   Divider(),
                   SizedBox(
@@ -81,6 +90,8 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                         scrollDirection: Axis.horizontal,
                         children: [
                           ItemScrollView(
+                              key: PageStorageKey(hashCode),
+                              controller: monthCtrl,
                               width: MediaQuery.of(context).size.width / 3,
                               items: months,
                               onChanged: (index) {
@@ -93,6 +104,8 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                                 }
                               }),
                           ItemScrollView(
+                              key: PageStorageKey(hashCode + 1),
+                              controller: dayCtrl,
                               width: MediaQuery.of(context).size.width / 3,
                               items: List.generate(
                                   daysInMonth(selectedYear, selectedMonth),
@@ -107,6 +120,8 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                                 }
                               }),
                           ItemScrollView(
+                              key: PageStorageKey(hashCode + 2),
+                              controller: yearCtrl,
                               width: MediaQuery.of(context).size.width / 3,
                               items: List.generate(
                                   widget.lastYear - widget.firstYear + 1,
@@ -124,7 +139,8 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                         ],
                       ))
                 ],
-              )
+              ),
+            )
           ],
         ),
       ),

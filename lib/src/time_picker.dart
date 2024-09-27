@@ -49,15 +49,20 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                       ])
                     ],
                   )),
-              if (isToggle)
-                SizedBox(
+              Visibility(
+                visible: isToggle,
+                child: SizedBox(
                   height: 90,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
                       ItemScrollView(
+                          key: PageStorageKey(hashCode),
                           width: MediaQuery.of(context).size.width / 3,
-                          items: List.generate(24, (index) => Text('$index')),
+                          items: List.generate(
+                              24,
+                              (index) =>
+                                  Text(index.toString().padLeft(2, '0'))),
                           onChanged: (index) {
                             setState(() {
                               hours = index;
@@ -70,8 +75,12 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                             }
                           }),
                       ItemScrollView(
+                          key: PageStorageKey(hashCode + 1),
                           width: MediaQuery.of(context).size.width / 3,
-                          items: List.generate(60, (index) => Text('$index')),
+                          items: List.generate(
+                              60,
+                              (index) =>
+                                  Text(index.toString().padLeft(2, '0'))),
                           onChanged: (index) {
                             setState(() {
                               minutes = index;
@@ -84,8 +93,12 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                             }
                           }),
                       ItemScrollView(
+                          key: PageStorageKey(hashCode + 2),
                           width: MediaQuery.of(context).size.width / 3,
-                          items: List.generate(60, (index) => Text('$index')),
+                          items: List.generate(
+                              60,
+                              (index) =>
+                                  Text(index.toString().padLeft(2, '0'))),
                           onChanged: (index) {
                             setState(() {
                               seconds = index;
@@ -99,7 +112,8 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                           }),
                     ],
                   ),
-                )
+                ),
+              )
             ],
           ),
         ));

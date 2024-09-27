@@ -88,6 +88,14 @@ DropdownTimePicker(
 )
 ```
 
+Dropdown Pace Picker
+```dart
+DropdownPacePicker(
+    pickerTitle: Text('Pace Picker'),
+    onChanged: (value) => print(value),
+)
+```
+
 ## Additional information
 
 Tell users more about the package: where to find more information, how to 
