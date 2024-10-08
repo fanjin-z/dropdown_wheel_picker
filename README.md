@@ -11,17 +11,29 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages). 
 -->
 
-Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Flutter package for dropdown scrollable wheel picker
+
+
+![GitHub Repo stars](https://img.shields.io/github/stars/fanjin-z/dropdown_wheel_picker?style=flat-square)
+![GitHub License](https://img.shields.io/github/license/fanjin-z/dropdown_wheel_picker?style=flat-square)
+![Pub Version](https://img.shields.io/pub/v/dropdown_wheel_picker?style=flat-square)
+![Pub Likes](https://img.shields.io/pub/likes/dropdown_wheel_picker?style=flat-square)
+![Pub Popularity](https://img.shields.io/pub/popularity/dropdown_wheel_picker?style=flat-square)
+
+
 
 ## Features
 
-List what your package can do. Maybe include images, gifs, or videos.
+| IOS | Android |
+| --- | --- |
+| <img src="assets/ios_screen_record.gif" alt="IOS Screen Recordrawing" width="160"/> | <img src="assets/android_screen_record.gif" alt="Android Screen Recordrawing" width="160"/> |
+
 
 ## Getting started
 
-List prerequisites and provide or point to information on how to
-start using the package.
+Prerequisites
+- Dart >= 3.0
+- Flutter
 
 ## Usage
 
