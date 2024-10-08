@@ -1,16 +1,20 @@
 import 'package:dropdown_wheel_picker/src/scroll_view.dart';
 import 'package:flutter/material.dart';
 
+import 'unit_type.dart';
+
 class DropdownDistancePicker extends StatefulWidget {
   const DropdownDistancePicker(
       {super.key,
       required this.pickerTitle,
       this.onChanged,
+      this.initialDistance,
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
   final ValueChanged<Length>? onChanged;
+  final Length? initialDistance;
   final double scrollWheelHeight;
   final Color backgroundColor;
 
@@ -21,6 +25,33 @@ class DropdownDistancePicker extends StatefulWidget {
 class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
   bool isToggle = false;
   Length length = Length(0, 'km');
+  late ScrollController wholeCtrl;
+  late ScrollController fractionCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+
+    int whole = 0;
+    int fraction = 0;
+    if (widget.initialDistance != null) {
+      length = widget.initialDistance!;
+      whole = length.value.truncate();
+      if (length.unit == 'km' || length.unit == 'mi') {
+        fraction = ((length.value - whole) * 10).truncate();
+      }
+    }
+
+    wholeCtrl = FixedExtentScrollController(initialItem: whole);
+    fractionCtrl = FixedExtentScrollController(initialItem: fraction);
+  }
+
+  @override
+  void dispose() {
+    wholeCtrl.dispose();
+    fractionCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +88,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                 children: [
                   Divider(),
                   Row(children: [
-                    Text('Unit Selection'),
+                    Text('Unit'),
                     Expanded(
                       child: ListTile(
                           contentPadding: EdgeInsets.all(0),
@@ -125,6 +156,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                           ItemScrollView(
                               key: PageStorageKey(hashCode),
                               width: MediaQuery.of(context).size.width / 2,
+                              controller: wholeCtrl,
                               items:
                                   List.generate(100, (index) => Text('$index')),
                               onChanged: (index) {
@@ -140,6 +172,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                           ItemScrollView(
                               key: PageStorageKey(hashCode + 1),
                               width: MediaQuery.of(context).size.width / 2,
+                              controller: fractionCtrl,
                               items:
                                   List.generate(10, (index) => Text('.$index')),
                               onChanged: (index) {
@@ -160,6 +193,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                       child: ItemScrollView(
                         key: PageStorageKey(hashCode + 2),
                         width: MediaQuery.of(context).size.width,
+                        controller: wholeCtrl,
                         items: List.generate(
                             21, (index) => Text('${index * 100}')),
                         onChanged: (index) {
@@ -180,11 +214,4 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
       ),
     );
   }
-}
-
-class Length {
-  double value;
-  String unit;
-
-  Length(this.value, this.unit);
 }

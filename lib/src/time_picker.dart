@@ -6,10 +6,12 @@ class DropdownTimePicker extends StatefulWidget {
       {super.key,
       required this.pickerTitle,
       this.onChanged,
+      this.initialTime,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
   final ValueChanged<Duration>? onChanged;
+  final Duration? initialTime;
   final Color backgroundColor;
 
   @override
@@ -21,6 +23,32 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
   int hours = 0;
   int minutes = 0;
   int seconds = 0;
+  late ScrollController hourCtrl;
+  late ScrollController minuteCtrl;
+  late ScrollController secondCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.initialTime != null) {
+      hours = widget.initialTime!.inHours;
+      minutes = widget.initialTime!.inMinutes % 60;
+      seconds = widget.initialTime!.inSeconds % 60;
+    }
+
+    hourCtrl = FixedExtentScrollController(initialItem: hours);
+    minuteCtrl = FixedExtentScrollController(initialItem: minutes);
+    secondCtrl = FixedExtentScrollController(initialItem: seconds);
+  }
+
+  @override
+  void dispose() {
+    hourCtrl.dispose();
+    minuteCtrl.dispose();
+    secondCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +87,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                       ItemScrollView(
                           key: PageStorageKey(hashCode),
                           width: MediaQuery.of(context).size.width / 3,
+                          controller: hourCtrl,
                           items: List.generate(
                               24,
                               (index) =>
@@ -77,6 +106,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                       ItemScrollView(
                           key: PageStorageKey(hashCode + 1),
                           width: MediaQuery.of(context).size.width / 3,
+                          controller: minuteCtrl,
                           items: List.generate(
                               60,
                               (index) =>
@@ -95,6 +125,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                       ItemScrollView(
                           key: PageStorageKey(hashCode + 2),
                           width: MediaQuery.of(context).size.width / 3,
+                          controller: secondCtrl,
                           items: List.generate(
                               60,
                               (index) =>

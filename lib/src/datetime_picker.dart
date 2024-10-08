@@ -51,6 +51,14 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
   }
 
   @override
+  void dispose() {
+    yearCtrl.dispose();
+    monthCtrl.dispose();
+    dayCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(

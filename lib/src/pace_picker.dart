@@ -1,16 +1,20 @@
 import 'package:dropdown_wheel_picker/src/scroll_view.dart';
 import 'package:flutter/material.dart';
 
+import 'unit_type.dart';
+
 class DropdownPacePicker extends StatefulWidget {
   const DropdownPacePicker(
       {super.key,
       required this.pickerTitle,
       this.onChanged,
+      this.initialPace,
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
   final Widget pickerTitle;
   final ValueChanged<Pace>? onChanged;
+  final Pace? initialPace;
   final double scrollWheelHeight;
   final Color backgroundColor;
 
@@ -23,12 +27,29 @@ class _DropdownPacePickerState extends State<DropdownPacePicker> {
   Pace pace = Pace(Duration(), '/km');
   int selectedMinute = 0;
   int selectedSecond = 0;
-  ScrollController minuteCtrl = FixedExtentScrollController(initialItem: 0);
-  ScrollController secondCtrl = FixedExtentScrollController(initialItem: 0);
+  late ScrollController minuteCtrl;
+  late ScrollController secondCtrl;
+
+
 
   @override
   void initState() {
     super.initState();
+
+    if (widget.initialPace != null) {
+      pace = widget.initialPace!;
+      selectedMinute = pace.duration.inMinutes;
+      selectedSecond = pace.duration.inSeconds % 60;
+    }
+    minuteCtrl = FixedExtentScrollController(initialItem: selectedMinute);
+    secondCtrl = FixedExtentScrollController(initialItem: selectedSecond);
+  }
+
+  @override
+  void dispose() {
+    minuteCtrl.dispose();
+    secondCtrl.dispose();
+    super.dispose();
   }
 
   @override
@@ -66,7 +87,7 @@ class _DropdownPacePickerState extends State<DropdownPacePicker> {
                   Divider(),
                   Row(
                     children: [
-                      Text('Unit Selection'),
+                      Text('Unit'),
                       Expanded(
                         child: ListTile(
                             contentPadding: EdgeInsets.all(0),
@@ -154,17 +175,5 @@ class _DropdownPacePickerState extends State<DropdownPacePicker> {
         ),
       ),
     );
-  }
-}
-
-class Pace {
-  Duration duration;
-  String unit;
-
-  Pace(this.duration, this.unit);
-
-  @override
-  String toString() {
-    return '${duration.toString()} $unit';
   }
 }

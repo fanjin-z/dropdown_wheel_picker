@@ -14,7 +14,7 @@ class DropdownItemPicker extends StatefulWidget {
 
   final Widget pickerTitle;
   final List<Widget> items;
-  final ValueChanged<Widget>? onChanged;
+  final ValueChanged<(Widget, int)>? onChanged;
   final int initialItemIndex;
   final double scrollWheelHeight;
   final Color backgroundColor;
@@ -87,7 +87,7 @@ class _DropdownItemPickerState extends State<DropdownItemPicker> {
                         selectedItem = widget.items[index];
                       });
                       if (widget.onChanged != null) {
-                        widget.onChanged!(widget.items[index]);
+                        widget.onChanged!((widget.items[index], index));
                       }
                     },
                   ),

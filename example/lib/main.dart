@@ -78,16 +78,19 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 16),
               DropdownDistancePicker(
                 pickerTitle: Text('Distance Picker'),
+                initialDistance: Length(2.5, 'mi'),
                 onChanged: (value) => print('${value.value} ${value.unit}'),
               ),
               SizedBox(height: 16),
               DropdownTimePicker(
                 pickerTitle: Text('Time Picker'),
+                initialTime: Duration(hours: 2, minutes: 0, seconds: 35),
                 onChanged: (value) => print(value),
               ),
               SizedBox(height: 16),
               DropdownPacePicker(
                 pickerTitle: Text('Pace Picker'),
+                initialPace: Pace(Duration(minutes: 6, seconds: 20), '/mi'),
                 onChanged: (value) => print(value),
               )
             ],
