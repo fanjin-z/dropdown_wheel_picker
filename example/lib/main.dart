@@ -95,7 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 16),
               DropdownHeightPicker(
-                  pickerTitle: Text('height'), initialHeight: Length(68, 'in'))
+                  pickerTitle: Text('height'),
+                  initialHeight: Length(70, 'in'),
+                  onChanged: (value) => print(value)),
+              SizedBox(height: 16),
+              DropdownWeightPicker(
+                  pickerTitle: Text('Weight'),
+                  initialWieght: Mass(150, 'lb'),
+                  onChanged: (value) => print(value)),
             ],
           )),
     ));

@@ -5,3 +5,4 @@ export 'src/time_picker.dart';
 export 'src/pace_picker.dart';
 export 'src/unit_type.dart';
 export 'src/height_picker.dart';
+export 'src/weight_picker.dart';
