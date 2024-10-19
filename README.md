@@ -26,8 +26,7 @@ Flutter package for dropdown scrollable wheel picker
 
 | IOS | Android |
 | --- | --- |
-| <img src="assets/ios_screen_record.gif" alt="IOS Screen Recordrawing" width="160"/> | <img src="assets/android_screen_record.gif" alt="Android Screen Recordrawing" width="160"/> |
-
+| <img src="https://github.com/fanjin-z/dropdown_wheel_picker/blob/c522d3caeb2ce499041e123eabf81385122414f5/assets/ios_screen_record.gif?raw=true" alt="IOS Screen Recordrawing" width="160"/> | <img src="https://github.com/fanjin-z/dropdown_wheel_picker/blob/c522d3caeb2ce499041e123eabf81385122414f5/assets/android_screen_record.gif?raw=true" alt="Android Screen Record" width="160"/> |
 
 ## Getting started
 
@@ -108,8 +107,25 @@ DropdownPacePicker(
 )
 ```
 
+Dropdown Height Picker
+```dart
+DropdownHeightPicker(
+    pickerTitle: Text('height'),
+    initialHeight: Length(70, 'in'),
+    onChanged: (value) => print(value)
+)
+              
+```
+
+Dropdown Weight Picker
+```dart
+DropdownWeightPicker(
+    pickerTitle: Text('Weight'),
+    initialWieght: Mass(150, 'lb'),
+    onChanged: (value) => print(value)
+)
+```
+
 ## Additional information
 
-Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Report bugs or issues in [Github Repo](https://github.com/fanjin-z/dropdown_wheel_picker). 

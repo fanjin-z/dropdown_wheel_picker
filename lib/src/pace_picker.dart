@@ -30,8 +30,6 @@ class _DropdownPacePickerState extends State<DropdownPacePicker> {
   late ScrollController minuteCtrl;
   late ScrollController secondCtrl;
 
-
-
   @override
   void initState() {
     super.initState();

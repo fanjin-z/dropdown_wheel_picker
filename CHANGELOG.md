@@ -15,3 +15,7 @@
 ## 0.1.0
 - Allow setting initial picker values
 - Add feature screen records
+
+## 0.1.1
+- Add `DropdownHeightPicker` and `DropdownWeightPicker`
+- Bug fixes

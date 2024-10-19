@@ -10,7 +10,6 @@ class Length {
   }
 }
 
-
 class Pace {
   Duration duration;
   String unit; // '/km', '/mi'
@@ -22,7 +21,6 @@ class Pace {
     return '${duration.toString()} $unit';
   }
 }
-
 
 class Mass {
   num value;

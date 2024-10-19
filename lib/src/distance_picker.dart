@@ -81,7 +81,6 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                     ]),
                   ],
                 )),
-            
             Visibility(
               visible: isToggle,
               child: Column(
@@ -208,7 +207,7 @@ class _DropdownDistancePickerState extends State<DropdownDistancePicker> {
                     )
                 ],
               ),
-              )
+            )
           ],
         ),
       ),
