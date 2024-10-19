@@ -1,5 +1,5 @@
 class Length {
-  double value;
+  num value;
   String unit;
 
   Length(this.value, this.unit);

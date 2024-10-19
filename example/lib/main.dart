@@ -92,7 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 pickerTitle: Text('Pace Picker'),
                 initialPace: Pace(Duration(minutes: 6, seconds: 20), '/mi'),
                 onChanged: (value) => print(value),
-              )
+              ),
+              SizedBox(height: 16),
+              DropdownHeightPicker(
+                  pickerTitle: Text('height'), initialHeight: Length(68, 'in'))
             ],
           )),
     ));
