@@ -46,8 +46,8 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
 
     yearCtrl = FixedExtentScrollController(
         initialItem: selectedYear - widget.firstYear);
-    monthCtrl = FixedExtentScrollController(initialItem: selectedMonth);
-    dayCtrl = FixedExtentScrollController(initialItem: selectedDay);
+    monthCtrl = FixedExtentScrollController(initialItem: selectedMonth - 1);
+    dayCtrl = FixedExtentScrollController(initialItem: selectedDay - 1);
   }
 
   @override
@@ -80,7 +80,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                     widget.pickerTitle,
                     Row(children: [
                       Text(
-                          '${monthAbbr[selectedMonth]} $selectedDay, $selectedYear'),
+                          '${monthAbbr[selectedMonth - 1]} $selectedDay, $selectedYear'),
                       isToggle
                           ? Icon(Icons.arrow_drop_up)
                           : Icon(Icons.arrow_drop_down)
