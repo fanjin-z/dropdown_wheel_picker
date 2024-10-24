@@ -103,6 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   pickerTitle: Text('Weight'),
                   initialWieght: Mass(150, 'lb'),
                   onChanged: (value) => print(value)),
+              SizedBox(height: 16),
+              DropdownCountryPicker(
+                pickerTitle: Text('Country'),
+                scrollWheelHeight: 120,
+                onChanged: (value) => print(value),
+              ),
             ],
           )),
     ));
