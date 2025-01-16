@@ -19,3 +19,6 @@
 ## 0.1.1
 - Add `DropdownHeightPicker` and `DropdownWeightPicker`
 - Bug fixes
+
+## 0.1.2
+- Add `DropdownCountryPicker`

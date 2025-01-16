@@ -35,12 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: SafeArea(
       child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
           child: Column(
             children: [
               DropdownItemPicker(
-                pickerTitle: Text('Countries'),
-                items: [
+                pickerTitle: const Text('Countries'),
+                items: const [
                   Text('China 🇨🇳'),
                   Text('France 🇫🇷'),
                   Text('Russia 🇷🇺'),
@@ -49,10 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
                 onChanged: (value) => print('Selected Country: $value'),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownMultiColItemPicker(
-                pickerTitle: Text('Star Wars'),
-                multiColItems: [
+                pickerTitle: const Text('Star Wars'),
+                multiColItems: const [
                   [
                     Text('Jedi'),
                     Text('Empire'),
@@ -67,45 +67,45 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
                 onChanged: (value) => print('Selected Countries: $value'),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownDatePicker(
-                pickerTitle: Text('Date Picker'),
+                pickerTitle: const Text('Date Picker'),
                 initialDate: DateTime(2024, 1, 1),
                 firstYear: 2020,
                 lastYear: 2025,
                 onChanged: (value) => print('Selected Date: $value'),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownDistancePicker(
-                pickerTitle: Text('Distance Picker'),
+                pickerTitle: const Text('Distance Picker'),
                 initialDistance: Length(2.5, 'mi'),
                 onChanged: (value) => print('${value.value} ${value.unit}'),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownTimePicker(
-                pickerTitle: Text('Time Picker'),
-                initialTime: Duration(hours: 2, minutes: 0, seconds: 35),
+                pickerTitle: const Text('Time Picker'),
+                initialTime: const Duration(hours: 2, minutes: 0, seconds: 35),
                 onChanged: (value) => print(value),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownPacePicker(
-                pickerTitle: Text('Pace Picker'),
-                initialPace: Pace(Duration(minutes: 6, seconds: 20), '/mi'),
+                pickerTitle: const Text('Pace Picker'),
+                initialPace: Pace(const Duration(minutes: 6, seconds: 20), '/mi'),
                 onChanged: (value) => print(value),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownHeightPicker(
-                  pickerTitle: Text('height'),
+                  pickerTitle: const Text('height'),
                   initialHeight: Length(70, 'in'),
                   onChanged: (value) => print(value)),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownWeightPicker(
-                  pickerTitle: Text('Weight'),
+                  pickerTitle: const Text('Weight'),
                   initialWieght: Mass(150, 'lb'),
                   onChanged: (value) => print(value)),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               DropdownCountryPicker(
-                pickerTitle: Text('Country'),
+                pickerTitle: const Text('Country'),
                 scrollWheelHeight: 120,
                 onChanged: (value) => print(value),
               ),

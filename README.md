@@ -126,6 +126,15 @@ DropdownWeightPicker(
 )
 ```
 
+Country Picker
+```dart
+DropdownCountryPicker(
+    pickerTitle: Text('Country'),
+    scrollWheelHeight: 120,
+    onChanged: (value) => print(value),
+)
+```
+
 ## Additional information
 
 Report bugs or issues in [Github Repo](https://github.com/fanjin-z/dropdown_wheel_picker). 
