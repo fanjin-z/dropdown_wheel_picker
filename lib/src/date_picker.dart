@@ -107,7 +107,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                                   selectedMonth = index + 1;
                                 });
                                 if (widget.onChanged != null) {
-                                  widget.onChanged!(DateTime(selectedYear,
+                                  widget.onChanged!(DateTime.utc(selectedYear,
                                       selectedMonth, selectedDay));
                                 }
                               }),
@@ -123,7 +123,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                                   selectedDay = index + 1;
                                 });
                                 if (widget.onChanged != null) {
-                                  widget.onChanged!(DateTime(selectedYear,
+                                  widget.onChanged!(DateTime.utc(selectedYear,
                                       selectedMonth, selectedDay));
                                 }
                               }),
@@ -140,7 +140,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                                   selectedYear = widget.firstYear + index;
                                 });
                                 if (widget.onChanged != null) {
-                                  widget.onChanged!(DateTime(selectedYear,
+                                  widget.onChanged!(DateTime.utc(selectedYear,
                                       selectedMonth, selectedDay));
                                 }
                               }),
