@@ -55,9 +55,9 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
     return Container(
         decoration: BoxDecoration(
             color: widget.backgroundColor,
-            borderRadius: BorderRadius.circular(20)),
+        ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           child: Column(
             children: [
               GestureDetector(
@@ -66,11 +66,12 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                         isToggle = !isToggle;
                       }),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       widget.pickerTitle,
                       Row(children: [
                         Text(formatDuration(hours, minutes, seconds)),
+                        SizedBox(width: 4),
                         isToggle
                             ? Icon(Icons.arrow_drop_up)
                             : Icon(Icons.arrow_drop_down)

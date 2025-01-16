@@ -33,10 +33,9 @@ class _DropdownCountryPickerState extends State<DropdownCountryPicker> {
     return Container(
       decoration: BoxDecoration(
         color: widget.backgroundColor,
-        borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         child: Column(
           children: [
             GestureDetector(
@@ -45,10 +44,10 @@ class _DropdownCountryPickerState extends State<DropdownCountryPicker> {
                 isToggle = !isToggle;
               }),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(flex: 3, child: widget.pickerTitle),
-                  Flexible(flex: 6, child: Text(selectedCountry ?? '')),
+                  Flexible(flex: 6, child: Text(selectedCountry ?? '')), 
                   Flexible(
                       flex: 1,
                       child: isToggle

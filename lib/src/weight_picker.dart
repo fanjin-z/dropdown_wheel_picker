@@ -48,10 +48,9 @@ class _DropdownWeightPickerState extends State<DropdownWeightPicker> {
     return Container(
         decoration: BoxDecoration(
           color: widget.backgroundColor,
-          borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
             child: Column(children: [
               GestureDetector(
                   behavior: HitTestBehavior.translucent,
@@ -59,11 +58,12 @@ class _DropdownWeightPickerState extends State<DropdownWeightPicker> {
                         isToggle = !isToggle;
                       }),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       widget.pickerTitle,
                       Row(children: [
                         Text('${weight.value} ${weight.unit}'),
+                        SizedBox(width: 4),
                         isToggle
                             ? const Icon(Icons.arrow_drop_up)
                             : const Icon(Icons.arrow_drop_down)

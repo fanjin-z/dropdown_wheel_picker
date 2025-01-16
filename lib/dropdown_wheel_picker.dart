@@ -1,4 +1,5 @@
 export 'src/item_picker.dart';
+export 'src/multi_col_item_picker.dart';
 export 'src/date_picker.dart';
 export 'src/distance_picker.dart';
 export 'src/time_picker.dart';
