@@ -1,23 +1,38 @@
 import 'package:dropdown_wheel_picker/src/scroll_view.dart';
 import 'package:flutter/material.dart';
 
+/// Dropdown scrollable picker to select a date
 class DropdownDatePicker extends StatefulWidget {
+  /// Creates a material design dropdown date picker
   const DropdownDatePicker(
       {super.key,
       required this.pickerTitle,
       required this.initialDate,
-      required this.firstYear,
-      required this.lastYear,
+      this.firstYear = 1980,
+      this.lastYear = 2030,
       this.onChanged,
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
+  /// Picker title
   final Widget pickerTitle;
+
+  /// Initially selected date
   final DateTime initialDate;
+
+  /// Earlist year that user can select
   final int firstYear;
+
+  /// Latest year that user can select
   final int lastYear;
+
+  /// Called when the user scrolls
   final ValueChanged<DateTime>? onChanged;
+
+  /// Pixel height of the scrollwheel
   final double scrollWheelHeight;
+
+  /// Picker background color
   final Color backgroundColor;
 
   @override
@@ -34,7 +49,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
   late ScrollController monthCtrl;
   late ScrollController dayCtrl;
 
-  List<Widget> months = List.generate(12, (index) => Text(monthAbbr[index]));
+  List<Widget> months = List.generate(12, (index) => Text(_monthAbbr[index]));
 
   @override
   void initState() {
@@ -79,7 +94,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                     widget.pickerTitle,
                     Row(children: [
                       Text(
-                          '${monthAbbr[selectedMonth - 1]} $selectedDay, $selectedYear'),
+                          '${_monthAbbr[selectedMonth - 1]} $selectedDay, $selectedYear'),
                       SizedBox(width: 4),
                       isToggle
                           ? Icon(Icons.arrow_drop_up)
@@ -100,7 +115,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                           ItemScrollView(
                               key: PageStorageKey(hashCode),
                               controller: monthCtrl,
-                              width: MediaQuery.of(context).size.width / 3,
+                              width: MediaQuery.of(context).size.width * 0.3,
                               items: months,
                               onChanged: (index) {
                                 setState(() {
@@ -114,9 +129,9 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                           ItemScrollView(
                               key: PageStorageKey(hashCode + 1),
                               controller: dayCtrl,
-                              width: MediaQuery.of(context).size.width / 3,
+                              width: MediaQuery.of(context).size.width * 0.2,
                               items: List.generate(
-                                  daysInMonth(selectedYear, selectedMonth),
+                                  _daysInMonth(selectedYear, selectedMonth),
                                   (index) => Text('${index + 1}')),
                               onChanged: (index) {
                                 setState(() {
@@ -130,7 +145,7 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
                           ItemScrollView(
                               key: PageStorageKey(hashCode + 2),
                               controller: yearCtrl,
-                              width: MediaQuery.of(context).size.width / 3,
+                              width: MediaQuery.of(context).size.width * 0.5,
                               items: List.generate(
                                   widget.lastYear - widget.firstYear + 1,
                                   (index) =>
@@ -156,15 +171,15 @@ class _DropdownDatePickerState extends State<DropdownDatePicker> {
   }
 }
 
-const _daysInMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const _monthDays = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-bool isLeapYear(int year) =>
+bool _isLeapYear(int year) =>
     (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
 
-int daysInMonth(int year, int month) =>
-    (month == 2 && isLeapYear(year)) ? 29 : _daysInMonth[month];
+int _daysInMonth(int year, int month) =>
+    (month == 2 && _isLeapYear(year)) ? 29 : _monthDays[month];
 
-const monthAbbr = [
+const _monthAbbr = [
   'Jan',
   'Feb',
   'Mar',

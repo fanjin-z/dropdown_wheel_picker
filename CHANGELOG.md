@@ -23,3 +23,7 @@
 ## 0.1.2
 - Add `DropdownCountryPicker`
 - UI adjustment & Bug fixes
+
+## 0.2.0
+- Add public API documentation
+- Update README screenshot

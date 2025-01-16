@@ -2,7 +2,10 @@ import 'package:dropdown_wheel_picker/src/scroll_view.dart';
 import 'package:dropdown_wheel_picker/src/unsd_m49_country_code.dart';
 import 'package:flutter/material.dart';
 
+/// Dropdown scrollable picker and search bar to select a country name
+/// Country names are from UN M49 country list
 class DropdownCountryPicker extends StatefulWidget {
+  /// Creates a material design dropdown country picker
   const DropdownCountryPicker(
       {super.key,
       required this.pickerTitle,
@@ -10,9 +13,16 @@ class DropdownCountryPicker extends StatefulWidget {
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
+  /// Picker title
   final Widget pickerTitle;
+
+  /// Called when the user scrolls or types in search bar
   final ValueChanged<String>? onChanged;
+
+  /// Pixel height of the scrollwheel
   final double scrollWheelHeight;
+
+  /// Picker background color
   final Color backgroundColor;
 
   @override
@@ -47,7 +57,7 @@ class _DropdownCountryPickerState extends State<DropdownCountryPicker> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(flex: 3, child: widget.pickerTitle),
-                  Flexible(flex: 6, child: Text(selectedCountry ?? '')), 
+                  Flexible(flex: 6, child: Text(selectedCountry ?? '')),
                   Flexible(
                       flex: 1,
                       child: isToggle

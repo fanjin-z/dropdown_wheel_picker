@@ -1,7 +1,9 @@
 import 'package:dropdown_wheel_picker/src/scroll_view.dart';
 import 'package:flutter/material.dart';
 
+/// Dropdown scrollable picker to select a elapsed time
 class DropdownTimePicker extends StatefulWidget {
+  /// Creates a material design dropdown time picker
   const DropdownTimePicker(
       {super.key,
       required this.pickerTitle,
@@ -9,9 +11,16 @@ class DropdownTimePicker extends StatefulWidget {
       this.initialTime,
       this.backgroundColor = Colors.white});
 
+  /// Picker title
   final Widget pickerTitle;
+
+  /// Called when the user scrolls
   final ValueChanged<Duration>? onChanged;
+
+  /// Initially selected time
   final Duration? initialTime;
+
+  /// Picker background color
   final Color backgroundColor;
 
   @override
@@ -54,7 +63,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: widget.backgroundColor,
+          color: widget.backgroundColor,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
@@ -70,7 +79,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                     children: [
                       widget.pickerTitle,
                       Row(children: [
-                        Text(formatDuration(hours, minutes, seconds)),
+                        Text(_formatDuration(hours, minutes, seconds)),
                         SizedBox(width: 4),
                         isToggle
                             ? Icon(Icons.arrow_drop_up)
@@ -152,7 +161,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
   }
 }
 
-String formatDuration(int hours, int minutes, int seconds) {
+String _formatDuration(int hours, int minutes, int seconds) {
   String durationStr =
       '${'$minutes'.padLeft(2, '0')}:${'$seconds'.padLeft(2, '0')}';
   if (hours > 0) {

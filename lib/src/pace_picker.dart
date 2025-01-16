@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'unit_type.dart';
 
+/// Dropdown scrollable picker to select a person's running/walking pace in imperial or metric unit
 class DropdownPacePicker extends StatefulWidget {
+  /// Creates a material design dropdown pace picker
   const DropdownPacePicker(
       {super.key,
       required this.pickerTitle,
@@ -12,10 +14,19 @@ class DropdownPacePicker extends StatefulWidget {
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
+  /// Picker title
   final Widget pickerTitle;
+
+  /// Called when the user scrolls
   final ValueChanged<Pace>? onChanged;
+
+  /// Initially selected pace
   final Pace? initialPace;
+
+  /// Pixel height of the scrollwheel
   final double scrollWheelHeight;
+
+  /// Picker background color
   final Color backgroundColor;
 
   @override

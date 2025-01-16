@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'scroll_view.dart';
 
+/// Dropdown scrollable picker to select multiple items
 class DropdownMultiColItemPicker extends StatefulWidget {
+  /// Creates a material design dropdown multi-column item picker
   const DropdownMultiColItemPicker(
       {super.key,
       required this.pickerTitle,
@@ -11,10 +13,20 @@ class DropdownMultiColItemPicker extends StatefulWidget {
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
+  /// Picker title
   final Widget pickerTitle;
+
+  /// List of item widgets for the user to select from
+  /// Input must be a 2d list (each row represent a list of item widgets for the user to select from)
   final List<List<Widget>> multiColItems;
+
+  /// Called when the user scrolls
   final ValueChanged<List<Widget>>? onChanged;
+
+  /// Pixel height of the scrollwheel
   final double scrollWheelHeight;
+
+  /// Picker background color
   final Color backgroundColor;
 
   @override

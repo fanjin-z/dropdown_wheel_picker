@@ -1,3 +1,4 @@
+// ignore: public_member_api_docs
 final List<Map<String, dynamic>> countryCode = [
   {
     "Global Code": 1,

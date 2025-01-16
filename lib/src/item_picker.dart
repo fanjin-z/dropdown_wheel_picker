@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'scroll_view.dart';
 
+/// Dropdown scrollable picker to select an item
 class DropdownItemPicker extends StatefulWidget {
+  /// Creates a material design dropdown item picker
   DropdownItemPicker(
       {super.key,
       required this.pickerTitle,
@@ -12,11 +14,22 @@ class DropdownItemPicker extends StatefulWidget {
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
+  /// Picker title
   final Widget pickerTitle;
+
+  /// List of item widgets for the user to select from
   final List<Widget> items;
+
+  /// Called when the user scrolls
   final ValueChanged<(Widget, int)>? onChanged;
+
+  /// Initially selected item's index (0-index)
   final int initialItemIndex;
+
+  /// Pixel height of the scrollwheel
   final double scrollWheelHeight;
+
+  /// Picker background color
   final Color backgroundColor;
 
   @override

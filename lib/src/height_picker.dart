@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'scroll_view.dart';
 import 'unit_type.dart';
 
+/// Dropdown scrollable picker to select a person's height in imperial or metric unit
 class DropdownHeightPicker extends StatefulWidget {
+  /// Creates a material design dropdown height picker
   const DropdownHeightPicker(
       {super.key,
       required this.pickerTitle,
@@ -12,10 +14,19 @@ class DropdownHeightPicker extends StatefulWidget {
       this.scrollWheelHeight = 100,
       this.backgroundColor = Colors.white});
 
+  /// Picker title
   final Widget pickerTitle;
+
+  /// Called when the user scrolls
   final ValueChanged<Length>? onChanged;
+
+  /// Initially selected height
   final Length? initialHeight;
+
+  /// Pixel height of the scrollwheel
   final double scrollWheelHeight;
+
+  /// Picker background color
   final Color backgroundColor;
 
   @override
