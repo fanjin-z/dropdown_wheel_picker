@@ -26,7 +26,7 @@ Flutter package for dropdown scrollable wheel picker
 
 | IOS | Android |
 | --- | --- |
-| <img src="https://github.com/fanjin-z/dropdown_wheel_picker/blob/c522d3caeb2ce499041e123eabf81385122414f5/assets/ios_screen_record.gif?raw=true" alt="IOS Screen Recordrawing" width="160"/> | <img src="https://github.com/fanjin-z/dropdown_wheel_picker/blob/c522d3caeb2ce499041e123eabf81385122414f5/assets/android_screen_record.gif?raw=true" alt="Android Screen Record" width="160"/> |
+| <img src="https://github.com/fanjin-z/dropdown_wheel_picker/blob/main/assets/ios_screen_record.gif?raw=true" alt="IOS Screen Recordrawing" width="160"/> | <img src="https://github.com/fanjin-z/dropdown_wheel_picker/blob/main/assets/android_screen_record.gif?raw=true" alt="Android Screen Record" width="160"/> |
 
 ## Getting started
 
